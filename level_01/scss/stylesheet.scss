@@ -1,0 +1,203 @@
+
+$black: #000;
+$white: #fff;
+$grey: #eeeeee;
+
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GENERAL SETTINGS ------------------- */
+/* ------------------------------------------------------------- */
+
+* {
+	padding:0;
+	margin:0;
+}
+
+body {
+	font-family: "Arial Black";
+	background: $white;
+	color: $black;
+	text-align: center;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME AREA -------------------------- */
+/* ------------------------------------------------------------- */
+
+#game {
+	background: $grey;
+	width: 760px;
+	height: 470px;
+	margin: 0 auto;
+	display: block;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	padding: 20px;
+}
+
+#emotions {
+	position: relative;
+	width: 760px;
+	height: 480px;
+	display: none;
+}
+
+/* Define the 3D perspective view and dimension of each card. */
+.emotion {
+	-webkit-perspective: 600;
+	width: 109px;
+	height: 145px;
+	position: absolute;
+	-moz-transition: all .3s;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+	cursor: pointer;
+}
+
+.face {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	-webkit-transition-property: opacity, transform, box-shadow;
+	-webkit-transition-duration: .3s;
+	-webkit-backface-visibility: hidden;
+}
+
+.front {
+	background: url('../img/deck-emotions.jpg') 0 -146px;
+	z-index: 10;
+}
+
+/*.back {
+	background: #efefef url('../img/deck-emotions.jpg');
+	-webkit-transform: rotate3d(0,1,0,-180deg);
+	z-index: 8;
+}*/
+
+.emotion:hover .face, .card-clicked .face {
+	-webkit-box-shadow: 0 0 10px #cccccc;
+}
+
+.card-clicked .front {
+	-webkit-transform: rotate3d(0,1,0,360deg);
+	z-index: 8;
+}
+
+.card-clicked .back {
+	-webkit-transform: rotate3d(0,1,0,0deg);
+	z-index: 10;
+}
+
+.card-removed {
+	opacity: 0.2;
+}
+
+.happy {background-position: 0 0;}
+.sad {background-position: -110px 0;}
+.fear {background-position: -220px 0;}
+.anger {background-position: -330px 0;}
+.disgust {background-position: -440px 0;}
+.surprise {background-position: -550px 0;}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME INTRO -------------------------- */
+/* ------------------------------------------------------------- */
+
+#gameIntro {
+	background:url('../img/startpage.png') top left no-repeat;
+	padding: 80px 0;
+	text-align: center;
+	height: 330px;
+}
+
+#gameIntro a.button {
+	background: $white;
+	border-radius: 5px;
+	display: block;
+	font-size: 30px;
+	margin: 230px auto 0;
+	padding: 10px;
+	width: 150px;
+	border: 3px solid #006438;
+	color: #006438;
+	text-decoration:none;
+}
+
+#gameIntro a.button:hover {
+	background: #006438;
+	color: white;
+	text-decoration:none;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME COMPLETED --------------------- */
+/* ------------------------------------------------------------- */
+
+#gameComplete {
+	background:url('../img/endpage.png') top left no-repeat;
+	padding: 80px 0;
+	text-align: center; 
+	height: 330px;
+}
+
+#gameComplete a.button {
+	background: $white;
+	border-radius: 5px;
+	display: block;
+	font-size: 30px;
+	margin: 50px auto 0;
+	padding: 10px;
+	width: 200px;
+	border: 5px solid #006438;
+	color:#006438;
+	text-decoration:none;
+}
+
+#gameComplete p#top {
+	margin: 200px 0 0;
+	font-size: 20px;
+	color:#006438;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME STATISTICS -------------------- */
+/* ------------------------------------------------------------- */
+
+#gameStats{
+	background: $grey;
+	width: 780px;
+	margin: 20px auto 20px;
+	display: block;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	padding: 10px;
+	overflow: auto;
+}
+
+#gameStats p#timer{
+	width: 200px;
+	float: left;
+	text-align: left;
+	font-family: arial;
+	padding: 0 0 0 10px;
+}
+
+#gameStats p#reset{
+	width: 200px;
+	float: right;
+	text-align: right;
+	padding: 0 10px 0 0;
+}
+
+#gameStats .gameReset{
+	width: 200px;
+	float: right;
+	text-align: right;
+	font-family: arial;
+	padding: 0 10px 0 0;
+	color: $black;
+	text-decoration:none;
+	display:block;
+}

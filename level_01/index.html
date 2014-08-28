@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Test project - Level 01</title>
+    
+    <!-- Begin Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="author" content="Niels Van Bergen"/>
+    <!-- End Meta Tags -->
+
+    <!-- Begin Stylesheets -->
+    <link href="css/stylesheet.css" rel="stylesheet">
+    <!-- End Stylesheets -->
+    
+	<!--[if lt IE 9]>
+	<script>
+	  document.createElement('video');
+	</script>
+	<![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="img/assets/favicon.ico">
+   
+  </head>
+
+  <body>
+  		<!-- Start game statistics -->
+		<section id="gameStats">
+			<p id="timer">Time: <span class="gameScore"></span></p>
+			<p id="reset"><a class="gameReset" href="">Reset</a></p>
+		</section>	
+		<!-- End game statistics -->
+		
+		
+		<!-- Start game area -->
+		<section id="game">
+		
+			<!-- Start game intro -->
+			<section id="gameIntro">
+				<p><a id="gamePlay" class="button" href="">Play</a></p>
+			</section>
+			<!-- End game intro -->
+
+			<!-- Start game finished -->
+			<section id="gameComplete">
+					<p id="top">Your time taken was <span class="gameScore"></span>.</p>
+					<p><a class="gameReset button" href="">Play again</a></p>
+			</section>
+			<!-- End game finished -->
+			
+			<!-- Start card deck -->
+			<div id="emotions">
+				<div class="emotion">
+					<div class="face front"></div>
+				</div>
+			</div>
+			<!-- End card deck -->
+			
+		</section> 
+		<!-- End game area-->
+
+        
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src = "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src = "js/main.js"></script> 
+  </body>
+</html>

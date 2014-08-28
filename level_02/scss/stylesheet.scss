@@ -1,0 +1,251 @@
+$grey: #eeeeee;
+$dark-yellow: #ffcc66;
+$light-grey: #EFEFEF;
+$soft-red: #ff6666;
+$soft-green: #47D282;
+$soft-grey: #A5C1C6;
+$white: #fff;
+$black: #000;
+
+@mixin border-radius($border-radius){
+  -ms-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  -webkit-border-radius: $border-radius;
+  border-radius: $border-radius;
+}
+
+@mixin user-select($value){
+  -ms-user-select: $value;
+  -moz-user-select: $value;
+  -webkit-user-select: $value;
+  user-select: $value;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset:""){
+  -moz-box-shadow: $top $left $blur $color;
+  -webkit-box-shadow: $top $left $blur $color;
+  box-shadow: $top $left $blur $color;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GENERAL SETTINGS ------------------- */
+/* ------------------------------------------------------------- */
+
+* {
+	padding:0;
+	margin:0;
+}
+
+body {
+	font-family: sans-serif;
+	font-size: 13px;
+	background: white;
+	text-align: center;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME AREA -------------------------- */
+/* ------------------------------------------------------------- */
+
+#game {
+	background: $soft-grey;
+	width: 760px;
+	height: 480px;
+	margin: 0 auto;
+	display: block;
+	padding: 10px;
+	border: solid 1px $light-grey;
+	@include border-radius(4px);
+}
+
+#gameArea {
+	position: relative;
+	width: 760px;
+	height: 480px;
+	display: none;
+	background-color: $white;  	
+	@include user-select(none);
+}
+
+#dropArea, #dragArea {
+  margin: 10px 0px 10px 0px;
+  float: left;
+  padding: 0px 20px;
+  @include border-radius(4px);
+}
+
+#dragArea {
+	margin-top: 60px;
+	border-right: dashed 1px $soft-grey;
+
+	.eyebrowsList, .eyesList, .mouthsList {
+		float: left;
+		border-right: solid 1px $light-grey;
+
+		div {
+			width: 100px;
+			height: 30px;
+			border: dashed 1px $light-grey;      
+			background-color: $white;
+			padding: 0px;
+			margin: 0px 10px 30px 10px;
+			@include border-radius(15px);
+		}
+
+		div:last-child {
+			margin: 0px 10px;
+		}
+
+		.ui-draggable-dragging {
+			@include box-shadow(0, 0, .2em, rgba(165, 193, 198, 0.2));
+			z-index: 2;
+		}
+
+		div[data-zone="eyebrows"] {background: transparent url(../img/eyebrows.png) no-repeat;}
+		div[data-zone="eyes"]{background: transparent url(../img/eyes.png) no-repeat;}
+		div[data-zone="mouth"]{background: transparent url(../img/mouth.png) no-repeat;}
+
+		div[data-emotion="anger"] {background-position: 0px -35px;}
+		div[data-emotion="happy"] {background-position: 0px -135px;}
+		div[data-emotion="surprise"] {background-position: 0px -235px;}
+		div[data-emotion="disgust"] {background-position: 0px -335px;}
+		div[data-emotion="sad"] {background-position: 0px -435px;}
+		div[data-emotion="fear"] {background-position: 0px -535px;}
+	}
+
+	.mouthsList {
+		border-right: none;
+	}
+} 
+
+#dropArea {
+	float: left;
+	margin-left: 50px;
+	width: 250px;
+	height: 400px;
+	background: white url(../img/emotion-drop.png) no-repeat;
+	background-position: center center;
+	background-size: 220px 350px;
+
+	div {
+		width: 100px;
+		height: 30px;
+		border-bottom: dashed 1px $white;
+		background-color: transparent;
+		margin: 10px 0px;
+	}
+
+	div[data-zone="eyebrows"] { position: relative; top: 63px; left: 75px; height: 20px;};
+	div[data-zone="eyes"] { position: relative; top: 44px; left: 75px;};
+	div[data-zone="mouth"] { position: relative; top: 58px; left: 75px;};
+}
+
+#answer {
+	position: relative;
+	float: right;
+	margin-right: 105px;
+	padding: 15px 40px;
+	font-family: sans-serif;
+	font-size: 14px;
+	color: $white;
+	background-color: $soft-green;
+	@include border-radius(4px);
+}
+
+.hovered {
+	border: none !important;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME INTRO -------------------------- */
+/* ------------------------------------------------------------- */
+
+#gameIntro {
+	background:url(../img/startpage.png) top left no-repeat;
+	padding: 80px 0;
+	text-align: center;
+	height: 330px;
+}
+
+#gameIntro a.button {
+	background: white;
+	border-radius: 5px;
+	display: block;
+	font-size: 30px;
+	margin: 230px auto 0;
+	padding: 10px;
+	width: 150px;
+	border: 3px solid #006438;
+	color: #006438;
+	text-decoration:none;
+}
+
+#gameIntro a.button:hover {
+	background: #006438;
+	color: white;
+	text-decoration:none;
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME COMPLETED --------------------- */
+/* ------------------------------------------------------------- */
+
+#gameComplete {
+	background:url(../img/endpage.png) top left no-repeat;
+	padding: 80px 0;
+	text-align: center; 
+	height: 330px;
+}
+
+#gameComplete a.button {
+	background: white;
+	border-radius: 5px;
+	display: block;
+	font-size: 30px;
+	margin: 50px auto 0;
+	padding: 10px;
+	width: 200px;
+	border: 5px solid #006438;
+	color:#006438;
+	text-decoration:none;
+}
+
+#gameComplete p#top {
+	margin: 200px 0 0;
+	font-size: 20px;
+	color:#006438;
+}
+
+#success {
+  position: absolute;
+  left: 160px;
+  top: 150px;
+  width: 0;
+  height: 0;
+  padding: 30px;
+  background-color: $white;
+  z-index: 100;
+  @include box-shadow(.2em , .2em, .4em, rgba(0, 0, 0, 0.3));
+  @include border-radius(4px);
+}
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME STATISTICS -------------------- */
+/* ------------------------------------------------------------- */
+
+#gameStats p#reset{
+	width: 200px;
+	float: right;
+	text-align: right;
+	padding: 0 10px 0 0;
+}
+
+#gameStats .gameReset{
+	width: 200px;
+	float: right;
+	text-align: right;
+	font-family: arial;
+	padding: 0 10px 0 0;
+	text-decoration:none;
+	display:block;
+}

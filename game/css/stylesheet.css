@@ -1,0 +1,225 @@
+/* ------------------------------------------------------------- */
+/* ------------------------ GENERAL SETTINGS ------------------- */
+/* ------------------------------------------------------------- */
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  font-family: sans-serif;
+  font-size: 13px;
+  background: white;
+  text-align: center; }
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME AREA -------------------------- */
+/* ------------------------------------------------------------- */
+#game {
+  background: #a5c1c6;
+  width: 760px;
+  height: 480px;
+  margin: 0 auto;
+  display: block;
+  padding: 10px;
+  border: solid 1px #efefef;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px; }
+
+#gameArea {
+  position: relative;
+  width: 760px;
+  height: 480px;
+  display: none;
+  background-color: white;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none; }
+
+#dropArea, #dragArea {
+  margin: 10px 0px 10px 0px;
+  float: left;
+  padding: 0px 20px;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px; }
+
+#dragArea {
+  margin-top: 60px;
+  border-right: dashed 1px #a5c1c6; }
+  #dragArea .eyebrowsList, #dragArea .eyesList, #dragArea .mouthsList {
+    float: left;
+    border-right: solid 1px #efefef; }
+    #dragArea .eyebrowsList div, #dragArea .eyesList div, #dragArea .mouthsList div {
+      width: 100px;
+      height: 30px;
+      border: dashed 1px #efefef;
+      background-color: white;
+      padding: 0px;
+      margin: 0px 10px 30px 10px;
+      -ms-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -webkit-border-radius: 15px;
+      border-radius: 15px; }
+    #dragArea .eyebrowsList div:last-child, #dragArea .eyesList div:last-child, #dragArea .mouthsList div:last-child {
+      margin: 0px 10px; }
+    #dragArea .eyebrowsList .ui-draggable-dragging, #dragArea .eyesList .ui-draggable-dragging, #dragArea .mouthsList .ui-draggable-dragging {
+      -moz-box-shadow: 0 0 0.2em rgba(165, 193, 198, 0.2);
+      -webkit-box-shadow: 0 0 0.2em rgba(165, 193, 198, 0.2);
+      box-shadow: 0 0 0.2em rgba(165, 193, 198, 0.2);
+      z-index: 2; }
+    #dragArea .eyebrowsList div[data-zone="eyebrows"], #dragArea .eyesList div[data-zone="eyebrows"], #dragArea .mouthsList div[data-zone="eyebrows"] {
+      background: transparent url(../img/eyebrows.png) no-repeat; }
+    #dragArea .eyebrowsList div[data-zone="eyes"], #dragArea .eyesList div[data-zone="eyes"], #dragArea .mouthsList div[data-zone="eyes"] {
+      background: transparent url(../img/eyes.png) no-repeat; }
+    #dragArea .eyebrowsList div[data-zone="mouth"], #dragArea .eyesList div[data-zone="mouth"], #dragArea .mouthsList div[data-zone="mouth"] {
+      background: transparent url(../img/mouth.png) no-repeat; }
+    #dragArea .eyebrowsList div[data-emotion="anger"], #dragArea .eyesList div[data-emotion="anger"], #dragArea .mouthsList div[data-emotion="anger"] {
+      background-position: 0px -35px; }
+    #dragArea .eyebrowsList div[data-emotion="happy"], #dragArea .eyesList div[data-emotion="happy"], #dragArea .mouthsList div[data-emotion="happy"] {
+      background-position: 0px -135px; }
+    #dragArea .eyebrowsList div[data-emotion="surprise"], #dragArea .eyesList div[data-emotion="surprise"], #dragArea .mouthsList div[data-emotion="surprise"] {
+      background-position: 0px -235px; }
+    #dragArea .eyebrowsList div[data-emotion="disgust"], #dragArea .eyesList div[data-emotion="disgust"], #dragArea .mouthsList div[data-emotion="disgust"] {
+      background-position: 0px -335px; }
+    #dragArea .eyebrowsList div[data-emotion="sad"], #dragArea .eyesList div[data-emotion="sad"], #dragArea .mouthsList div[data-emotion="sad"] {
+      background-position: 0px -435px; }
+    #dragArea .eyebrowsList div[data-emotion="fear"], #dragArea .eyesList div[data-emotion="fear"], #dragArea .mouthsList div[data-emotion="fear"] {
+      background-position: 0px -535px; }
+  #dragArea .mouthsList {
+    border-right: none; }
+
+#dropArea {
+  float: left;
+  margin-left: 50px;
+  width: 250px;
+  height: 400px;
+  background: white url(../img/emotion-drop.png) no-repeat;
+  background-position: center center;
+  background-size: 220px 350px; }
+  #dropArea div {
+    width: 100px;
+    height: 30px;
+    border-bottom: dashed 1px white;
+    background-color: transparent;
+    margin: 10px 0px; }
+  #dropArea div[data-zone="eyebrows"] {
+    position: relative;
+    top: 63px;
+    left: 75px;
+    height: 20px; }
+  #dropArea div[data-zone="eyes"] {
+    position: relative;
+    top: 44px;
+    left: 75px; }
+  #dropArea div[data-zone="mouth"] {
+    position: relative;
+    top: 58px;
+    left: 75px; }
+
+#answer {
+  position: relative;
+  float: right;
+  margin-right: 105px;
+  padding: 15px 40px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: white;
+  background-color: #47d282;
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px; }
+
+.hovered {
+  border: none !important; }
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME INTRO -------------------------- */
+/* ------------------------------------------------------------- */
+#gameIntro {
+  background: url(../img/startpage.png) top left no-repeat;
+  padding: 80px 0;
+  text-align: center;
+  height: 330px; }
+
+#gameIntro a.button {
+  background: white;
+  border-radius: 5px;
+  display: block;
+  font-size: 30px;
+  margin: 230px auto 0;
+  padding: 10px;
+  width: 150px;
+  border: 3px solid #006438;
+  color: #006438;
+  text-decoration: none; }
+
+#gameIntro a.button:hover {
+  background: #006438;
+  color: white;
+  text-decoration: none; }
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME COMPLETED --------------------- */
+/* ------------------------------------------------------------- */
+#gameComplete {
+  background: url(../img/endpage.png) top left no-repeat;
+  padding: 80px 0;
+  text-align: center;
+  height: 330px; }
+
+#gameComplete a.button {
+  background: white;
+  border-radius: 5px;
+  display: block;
+  font-size: 30px;
+  margin: 50px auto 0;
+  padding: 10px;
+  width: 200px;
+  border: 5px solid #006438;
+  color: #006438;
+  text-decoration: none; }
+
+#gameComplete p#top {
+  margin: 200px 0 0;
+  font-size: 20px;
+  color: #006438; }
+
+#success {
+  position: absolute;
+  left: 160px;
+  top: 150px;
+  width: 0;
+  height: 0;
+  padding: 30px;
+  background-color: white;
+  z-index: 100;
+  -moz-box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.3);
+  box-shadow: 0.2em 0.2em 0.4em rgba(0, 0, 0, 0.3);
+  -ms-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px; }
+
+/* ------------------------------------------------------------- */
+/* ------------------------ GAME STATISTICS -------------------- */
+/* ------------------------------------------------------------- */
+#gameStats p#reset {
+  width: 200px;
+  float: right;
+  text-align: right;
+  padding: 0 10px 0 0; }
+
+#gameStats .gameReset {
+  width: 200px;
+  float: right;
+  text-align: right;
+  font-family: arial;
+  padding: 0 10px 0 0;
+  text-decoration: none;
+  display: block; }
