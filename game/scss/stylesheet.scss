@@ -1,6 +1,6 @@
 $grey: #eeeeee;
 $dark-yellow: #ffcc66;
-$light-grey: #EFEFEF;
+$light-grey: #eeffff;
 $soft-red: #ff6666;
 $soft-green: #47D282;
 $soft-grey: #A5C1C6;
@@ -48,52 +48,43 @@ body {
 /* ------------------------------------------------------------- */
 
 #game {
-	background: $soft-grey;
-	width: 760px;
-	height: 480px;
-	margin: 0 auto;
+	background: $light-grey;
+	width: 1024px;
+	height: 768px;
 	display: block;
-	padding: 10px;
-	border: solid 1px $light-grey;
-	@include border-radius(4px);
+	margin: 0 auto;
+	@include user-select(none);
 }
 
 #gameArea {
 	position: relative;
-	width: 760px;
-	height: 480px;
+	padding: 50px;
+	width: 924px;
+	height: 668px;
 	display: none;
-	background-color: $white;  	
+	background: $light-grey;	
 	@include user-select(none);
 }
 
 #dropArea, #dragArea {
-  margin: 10px 0px 10px 0px;
   float: left;
-  padding: 0px 20px;
   @include border-radius(4px);
 }
 
 #dragArea {
-	margin-top: 60px;
+	margin-top: 25px;
 	border-right: dashed 1px $soft-grey;
 
 	.eyebrowsList, .eyesList, .mouthsList {
 		float: left;
-		border-right: solid 1px $light-grey;
+		border-right: dashed 1px $soft-grey;
 
 		div {
-			width: 100px;
-			height: 30px;
-			border: dashed 1px $light-grey;      
-			background-color: $white;
+			width: 134px;
+			height: 80px;
+			margin: 10px;
 			padding: 0px;
-			margin: 0px 10px 30px 10px;
 			@include border-radius(15px);
-		}
-
-		div:last-child {
-			margin: 0px 10px;
 		}
 
 		.ui-draggable-dragging {
@@ -105,12 +96,16 @@ body {
 		div[data-zone="eyes"]{background: transparent url(../img/eyes.png) no-repeat;}
 		div[data-zone="mouth"]{background: transparent url(../img/mouth.png) no-repeat;}
 
-		div[data-emotion="anger"] {background-position: 0px -35px;}
-		div[data-emotion="happy"] {background-position: 0px -135px;}
-		div[data-emotion="surprise"] {background-position: 0px -235px;}
-		div[data-emotion="disgust"] {background-position: 0px -335px;}
-		div[data-emotion="sad"] {background-position: 0px -435px;}
-		div[data-emotion="fear"] {background-position: 0px -535px;}
+		div[data-emotion="anger"] {background-position: -16px -40px;}
+		div[data-emotion="happy"] {background-position: -16px -210px;}
+		div[data-emotion="surprise"] {background-position: -16px -380px;}
+		div[data-emotion="disgust"] {background-position: -16px -550px;}
+		div[data-emotion="sad"] {background-position: -16px -720px;}
+		div[data-emotion="fear"] {background-position: -16px -890px;}
+	}
+
+	.eyebrowsList {
+		border-left: dashed 1px $soft-grey;
 	}
 
 	.mouthsList {
@@ -120,33 +115,34 @@ body {
 
 #dropArea {
 	float: left;
+	margin-top: 25px;
 	margin-left: 50px;
-	width: 250px;
-	height: 400px;
-	background: white url(../img/emotion-drop.png) no-repeat;
+	width: 394px;
+	height: 564px;
+	background: url(../img/emotion-drop.png) no-repeat;
 	background-position: center center;
-	background-size: 220px 350px;
+	background-size: 319px 500px;
 
 	div {
-		width: 100px;
-		height: 30px;
+		width: 134px;
+		height: 50px;
 		border-bottom: dashed 1px $white;
 		background-color: transparent;
-		margin: 10px 0px;
 	}
 
-	div[data-zone="eyebrows"] { position: relative; top: 63px; left: 75px; height: 20px;};
-	div[data-zone="eyes"] { position: relative; top: 44px; left: 75px;};
-	div[data-zone="mouth"] { position: relative; top: 58px; left: 75px;};
+	div[data-zone="eyebrows"] { position: relative; top: 75px; left: 129px; height: 40px;};
+	div[data-zone="eyes"] { position: relative; top:55px; left: 129px;};
+	div[data-zone="mouth"] { position: relative; top: 80px; left: 129px;};
 }
 
 #answer {
 	position: relative;
-	float: right;
-	margin-right: 105px;
-	padding: 15px 40px;
+	float: left;
+	width: 100%;
+	padding: 15px 0px;
+	margin-top: 20px;
 	font-family: sans-serif;
-	font-size: 14px;
+	font-size: 18px;
 	color: $white;
 	background-color: $soft-green;
 	@include border-radius(4px);
@@ -161,7 +157,7 @@ body {
 /* ------------------------------------------------------------- */
 
 #gameIntro {
-	background:url(../img/startpage.png) top left no-repeat;
+	/*background:url(../img/startpage.png) top left no-repeat;*/
 	padding: 80px 0;
 	text-align: center;
 	height: 330px;
@@ -191,7 +187,7 @@ body {
 /* ------------------------------------------------------------- */
 
 #gameComplete {
-	background:url(../img/endpage.png) top left no-repeat;
+	/*background:url(../img/endpage.png) top left no-repeat;*/
 	padding: 80px 0;
 	text-align: center; 
 	height: 330px;
@@ -218,11 +214,11 @@ body {
 
 #success {
   position: absolute;
-  left: 160px;
-  top: 150px;
+  left: 162px;
+  top: 206px;
   width: 0;
   height: 0;
-  padding: 30px;
+  padding: 50px;
   background-color: $white;
   z-index: 100;
   @include box-shadow(.2em , .2em, .4em, rgba(0, 0, 0, 0.3));
