@@ -28,7 +28,9 @@ function init(){
 	uiGame.hide();
 	playGame = false;
 
-	uiIntro.show();
+	//uiIntro.show();
+	uiIntro.hide();
+	startGame();
 	
 	uiPlay.click(function(e){
 		e.preventDefault();
@@ -136,9 +138,9 @@ function handleElementDrop( event, ui ) {
   if ( correctElements == 3 ) {
     $('#success').show();
     $('#success').animate( {
-      left: '160px',
-      top: '150px',
-      width: '300px',
+      left: '162px',
+      top: '206px',
+      width: '600px',
       height: '100px',
       opacity: 1
     } );
