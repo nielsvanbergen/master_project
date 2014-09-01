@@ -58,27 +58,27 @@ function startGame(){
 function loadGame(){
 	// Hide the success message
 	$('#success').hide();
-	$('#success').css( {left: '160px', top: '150px', width: 0, height: 0} );
+	$('#success').css( {left: '212px', top: '256px', width: 0, height: 0} );
 	$('#answer').remove();
 
 	emotions.sort(function() {return Math.random() - 0.3;});
 	correctEmotion = emotions[0];
 
 	// Create the face elements for each expression
-	var eyebrows = [ "anger", "happy", "fear", "disgust", "sad", "surprise" ];
+	var eyebrows = [ "anger", "happy", "surprise", "disgust", "fear-sad" ];
 	eyebrows.sort(function() {return Math.random() - 0.5;});
 
 	$('<div class="eyebrowsList"></div>').appendTo( '#dragArea' );
 	for ( var i=0; i< eyebrows.length; i++ ) {
 	$('<div></div>').attr({ 'data-zone': 'eyebrows', 'data-emotion': eyebrows[i] }).appendTo( '.eyebrowsList' ).draggable( {
-		containment: 'gameArea',
+		containment: '#gameArea',
 		stack: '#dragArea',
 		cursor: 'move',
 		revert: true
-	} );
+		} );
 	}
 	
-	var eyes = [ "anger", "happy", "fear", "disgust", "sad", "surprise" ];
+	var eyes = [ "happy", "sad", "anger-disgust", "fear-surprise" ];
 	eyes.sort(function() {return Math.random() - 0.5;});
 
 	$('<div class="eyesList"></div>').appendTo( '#dragArea' );
@@ -88,10 +88,10 @@ function loadGame(){
 		stack: '#dragArea',
 		cursor: 'move',
 		revert: true
-	} );
+		} );
 	}
 
-	var mouths = [ "anger", "happy", "fear", "disgust", "sad", "surprise" ];
+	var mouths = [ "anger", "happy", "sad", "surprise", "fear", "disgust" ];
 	mouths.sort(function() {return Math.random() - 0.5;});
 
 	$('<div class="mouthsList"></div>').appendTo( '#dragArea' );
@@ -120,9 +120,28 @@ function handleElementDrop( event, ui ) {
   var correctZone = $(this).data( 'zone' );
 
   var dragEmotion = ui.draggable.data( 'emotion' );
+  var dragEmotion2;
+
   var dragZone = ui.draggable.data( 'zone' );
- 
-  if ( correctZone == dragZone && correctEmotion == dragEmotion ) {
+
+  if ( dragZone == 'eyebrows' && dragEmotion == 'fear-sad' ) {
+		dragEmotion = 'fear';
+		dragEmotion2 = 'sad';
+  }
+
+  if ( dragZone == 'eyes' ) {
+	if ( dragEmotion == 'anger-disgust' ) {
+		dragEmotion = 'anger';
+		dragEmotion2 = 'disgust';
+	}
+
+	if ( dragEmotion == 'fear-surprise' ) {
+		dragEmotion = 'fear';
+		dragEmotion2 = 'surprise';
+	}
+  }
+
+  if ( correctZone == dragZone && (correctEmotion == dragEmotion || correctEmotion == dragEmotion2) ) {
     ui.draggable.addClass( 'hovered' );
     $(this).addClass( 'hovered' );
 
@@ -138,9 +157,9 @@ function handleElementDrop( event, ui ) {
   if ( correctElements == 3 ) {
     $('#success').show();
     $('#success').animate( {
-      left: '162px',
-      top: '206px',
-      width: '600px',
+      left: '212px',
+      top: '256px',
+      width: '500px',
       height: '100px',
       opacity: 1
     } );
